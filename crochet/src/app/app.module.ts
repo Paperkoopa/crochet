@@ -8,10 +8,12 @@ import { MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatSliderModule } from '@angular/material/slider';
+import { CanvasComponent } from './canvas/canvas.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    CanvasComponent,
   ],
   imports: [
     BrowserModule,
