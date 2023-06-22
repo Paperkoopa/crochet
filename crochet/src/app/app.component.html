@@ -1,0 +1,27 @@
+<form>
+  <mat-form-field>
+    <mat-label>Test!</mat-label>
+    <input matInput type="text" value="Test">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Test!</mat-label>
+    <input matInput type="text" value="Test">
+  </mat-form-field>
+</form>
+
+<mat-card>
+  <mat-card-content>
+    <h1>Diameter</h1>
+    <!-- <mat-label>(number of stitches per loop)</mat-label> -->
+    <div>
+      <mat-slider discrete min="1" max="20" step="1" value="10">
+        <input matSliderThumb #diaInput (change)="onDiameterChanged(diaInput.value)">
+      </mat-slider>
+    </div>
+    <div class="result-container">
+      <label>Circumference</label>
+      <label>{{circumference}}</label>
+    </div>
+  </mat-card-content>
+</mat-card>
