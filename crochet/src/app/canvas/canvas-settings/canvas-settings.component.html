@@ -1,0 +1,141 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Settings
+    </mat-panel-title>
+    <mat-panel-description>
+      Adjust size and color settings
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Size settings
+        </mat-panel-title>
+        <mat-panel-description>
+          Designer and grid sizes
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <!-- <form>
+      <mat-form-field>
+        <mat-label>Test!</mat-label>
+        <input matInput type="text" value="Test">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Test!</mat-label>
+        <input matInput type="text" value="Test">
+      </mat-form-field>
+    </form> -->
+
+      <!-- <mat-card>
+            <mat-card-content>
+              <h4>Diameter</h4>
+              <mat-label>(number of stitches per loop)</mat-label>
+              <div>
+                <mat-slider discrete min="1" max="20" step="1">
+                  <input matSliderThumb #diaInput value="10" (change)="onDiameterChanged(diaInput.value)">
+                </mat-slider>
+              </div>
+              <div class="result-container">
+                <label>Circumference</label>
+                <label>{{circumference}}</label>
+              </div>
+            </mat-card-content>
+          </mat-card> -->
+      <mat-card>
+        <mat-card-content>
+          <h4>Maximum Width</h4>
+          <mat-label>Maximum allowed diameter (# of stitches wide) of designer</mat-label>
+          <div>
+            <mat-slider discrete min="1" max="20" step="1">
+              <input matSliderThumb #widthInput [value]="settings.maxWidth" (change)="onSettingChanged('maxWidth', widthInput.value)">
+            </mat-slider>
+          </div>
+
+          <h4>Maximum Rows</h4>
+          <mat-label>Maximum allowed length (# of rows) of designer</mat-label>
+          <div>
+            <mat-slider discrete min="1" max="20" step="1">
+              <input matSliderThumb #lengthInput [value]="settings.maxRows" (change)="onSettingChanged('maxRows', lengthInput.value)">
+            </mat-slider>
+          </div>
+
+          <h4>Square Size</h4>
+          <mat-label>Width and height of individual squares of the designer</mat-label>
+          <div>
+            <mat-slider discrete min="2" max="50" step="1">
+              <input matSliderThumb #sizeInput [value]="settings.squareSize" (change)="onSettingChanged('squareSize', sizeInput.value)">
+            </mat-slider>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Color settings
+        </mat-panel-title>
+        <mat-panel-description>
+          Adjust designer colors
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-card>
+        <mat-card-content>
+          <h4>Background Color</h4>
+          <mat-label>Color of designer background or unfilled squares</mat-label>
+          <div>
+            <!-- todo: associate label to input with 'for' -->
+            <input type="color" #backgroundColorInput [value]="settings.backgroundColor"
+              (change)="onSettingChanged('backgroundColor', backgroundColorInput.value)">
+          </div>
+
+          <h4>Grid Color</h4>
+          <mat-label>Color of grid between squares</mat-label>
+          <div>
+            <input type="color" #gridColorInput [value]="settings.gridColor"
+              (change)="onSettingChanged('gridColor', gridColorInput.value)">
+          </div>
+
+          <h4>Symmetry Axis Color</h4>
+          <mat-label>Color of central symmetry axis</mat-label>
+          <div>
+            <input type="color" #axisColorInput [value]="settings.axisColor"
+              (change)="onSettingChanged('axisColor', axisColorInput.value)">
+          </div>
+
+          <h4>Filled Color</h4>
+          <mat-label>Color of filled squares</mat-label>
+          <div>
+            <input type="color" #filledColorInput [value]="settings.filledColor"
+              (change)="onSettingChanged('filledColor', filledColorInput.value)">
+          </div>
+
+          <h4>Border Color</h4>
+          <mat-label>Color of the border surrounding the designer</mat-label>
+          <div>
+            <input type="color" #borderColorInput [value]="settings.borderColor"
+              (change)="onSettingChanged('borderColor', borderColorInput.value)">
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-expansion-panel>
+
+    <!-- <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Color settings
+      </mat-panel-title>
+      <mat-panel-description>
+        Adjust background, square and grid colors
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+  </mat-expansion-panel> -->
+  </mat-accordion>
+
+  <mat-action-row>
+    <button mat-button color="accent" (click)="resetSettings()">Reset to defaults</button>
+  </mat-action-row>
+</mat-expansion-panel>
