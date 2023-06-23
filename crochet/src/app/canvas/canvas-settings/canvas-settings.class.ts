@@ -3,7 +3,7 @@ export default class canvasSettings {
     'maxRows': number = 20;
     'squareSize': number = 30;
     'backgroundColor': string = '#F0F8FF';
-    'gridColor': string = '#F8F8FF';
+    'gridColor': string = '#A9A9A9';
     'axisColor': string = '#800000';
     'filledColor': string = '#4B0082';
     'borderColor': string = '#000000';

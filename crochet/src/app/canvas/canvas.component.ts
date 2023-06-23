@@ -18,20 +18,35 @@ export class CanvasComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.ctx = this.canvas.nativeElement.getContext('2d');
-    this.initializeCanvas(500, 500, this.settings.backgroundColor);
+    this.initializeCanvas(500, 500);
   };
 
-  initializeCanvas(width: number, height: number, backgroundColor: string): void {
+  initializeCanvas(width: number, height: number): void {
     this.ctx.canvas.width = width;
     this.ctx.canvas.height = height;
-    this.ctx.fillStyle = backgroundColor;
+    this.ctx.fillStyle = this.settings.backgroundColor;
     this.ctx.fillRect(0, 0, width, height);
-    this.ctx.strokeStyle = "Black";
+    this.ctx.strokeStyle = this.settings.borderColor;
     this.ctx.strokeRect(0, 0, width, height);
+
+    this.drawGrid(this.settings.squareSize, this.settings.gridColor);
+
+    this.drawAxis(this.settings.axisColor);
   };
 
   drawGrid(size: number, color: string): void {
     this.ctx.strokeStyle = color;
+    // for(let i; i++; i>size)
+    this.ctx.strokeRect(size, size, size, size);
+  }
+
+  drawAxis(color: string): void {
+    this.ctx.strokeStyle = color;
+    this.ctx.beginPath();
+    const x = Math.round(this.ctx.canvas.width / 2)
+    this.ctx.moveTo(x, 1);
+    this.ctx.lineTo(x, this.ctx.canvas.height-1);
+    this.ctx.stroke();
   }
 
   applySettings(settings: canvasSettings/*Record<CanvasSettings, keyof CanvasSettings>*/) {
@@ -40,7 +55,7 @@ export class CanvasComponent implements AfterViewInit {
     const newWidth = settings.maxWidth * settings.squareSize;
     const newHeight = settings.maxRows * settings.squareSize;
 
-    this.initializeCanvas(newWidth, newHeight, settings.backgroundColor);
+    this.initializeCanvas(newWidth, newHeight);
     this.drawGrid(settings.squareSize, settings.gridColor);
     console.log(this.settings); //DEBUG
   };
